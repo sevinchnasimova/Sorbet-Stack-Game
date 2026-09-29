@@ -1,0 +1,222 @@
+:root {
+  --bg: #fbeef3;
+  --ink: #4a4458;
+  --muted: #978da8;
+  --card: #fffdfb;
+  --line: #f2ddd2;
+  --accent: #e78bb0;
+  --accent-dark: #c9668d;
+  --teal: #57a89b;
+  --teal-dark: #3f857a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 28px 16px 48px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", Verdana, sans-serif;
+}
+
+.layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-col { max-width: 372px; }
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin: 2px 0 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.board-wrap {
+  position: relative;
+  border: 3px solid #fffdfb;
+  outline: 2px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fffdfb;
+  box-shadow: 0 14px 34px rgba(201, 102, 141, 0.16);
+}
+
+#board {
+  display: block;
+  width: min(360px, calc(100vw - 32px));
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 68, 88, 0.32);
+  padding: 20px;
+}
+
+.overlay.hidden { display: none; }
+
+.dialog {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 22px 26px;
+  text-align: center;
+  max-width: 280px;
+}
+
+#overlay-text { margin: 0 0 6px; font-size: 24px; font-weight: 700; }
+
+#overlay-stats {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.panel {
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 76px;
+}
+
+.card {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+
+.score-card { text-align: center; }
+
+.card-label {
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+.hero {
+  margin: 0 0 8px;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 2px;
+  font-size: 14px;
+}
+
+.row span { color: var(--muted); }
+
+.previews { display: flex; gap: 12px; }
+
+.previews .card { flex: 1; min-width: 0; text-align: center; }
+
+.previews canvas { width: 100%; height: auto; }
+
+.card-title {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hint { font-weight: 400; color: var(--muted); font-size: 12px; }
+
+.buttons { display: grid; gap: 8px; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  padding: 8px 10px;
+}
+
+button:hover { border-color: var(--accent); }
+
+button:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 1px;
+}
+
+#start-btn, #overlay-btn {
+  background: var(--accent);
+  border-color: var(--accent-dark);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px;
+}
+
+#start-btn:hover, #overlay-btn:hover { background: var(--accent-dark); }
+
+#overlay-btn { width: 100%; }
+
+#music-btn[aria-pressed="true"] {
+  background: var(--teal);
+  border-color: var(--teal-dark);
+  color: #fff;
+}
+
+.vol-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.vol-row input { flex: 1; accent-color: var(--teal); }
+
+.help ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.touch-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.touch-controls button { flex: 1; }
+
+@media (pointer: fine) {
+  .touch-controls { display: none; }
+}
+
+@media (max-width: 640px) {
+  .panel {
+    width: min(366px, calc(100vw - 32px));
+    padding-top: 0;
+  }
+  .game-col { max-width: none; }
+}

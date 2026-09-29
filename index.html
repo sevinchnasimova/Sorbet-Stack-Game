@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sorbet Stack</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="layout">
+  <div class="game-col">
+    <h1>Sorbet Stack</h1>
+    <p class="subtitle">A pastel block-stacking treat</p>
+    <div class="board-wrap">
+      <canvas id="board" width="360" height="720" aria-label="Sorbet Stack board"></canvas>
+      <div id="overlay" class="overlay hidden">
+        <div class="dialog">
+          <p id="overlay-text">Paused</p>
+          <p id="overlay-stats"></p>
+          <button id="overlay-btn" type="button">Restart</button>
+        </div>
+      </div>
+    </div>
+    <div class="touch-controls" aria-label="Touch controls">
+      <button data-k="left" type="button">&#9664;</button>
+      <button data-k="rotate" type="button">&#8635;</button>
+      <button data-k="right" type="button">&#9654;</button>
+      <button data-k="down" type="button">&#9660;</button>
+      <button data-k="drop" type="button">Drop</button>
+    </div>
+  </div>
+  <aside class="panel">
+    <div class="card score-card">
+      <p class="card-label">Score</p>
+      <p class="hero" id="score">0</p>
+      <div class="row"><span>Best</span><strong id="best">0</strong></div>
+      <div class="row"><span>Lines</span><strong id="lines">0</strong></div>
+      <div class="row"><span>Level</span><strong id="level">1</strong></div>
+    </div>
+    <div class="previews">
+      <div class="card">
+        <p class="card-title">Next</p>
+        <canvas id="next" width="120" height="120"></canvas>
+      </div>
+      <div class="card">
+        <p class="card-title">Hold <span class="hint">(C)</span></p>
+        <canvas id="hold" width="120" height="60"></canvas>
+      </div>
+    </div>
+    <div class="card buttons">
+      <button id="start-btn" type="button">Start</button>
+      <button id="pause-btn" type="button">Pause</button>
+      <button id="music-btn" type="button" aria-pressed="false">Music: Off</button>
+      <label class="vol-row" for="volume">Volume
+        <input id="volume" type="range" min="0" max="100" value="70" />
+      </label>
+    </div>
+    <div class="card help">
+      <p class="card-title">Controls</p>
+      <ul>
+        <li>&#8592; &#8594; move</li>
+        <li>&#8595; soft drop</li>
+        <li>&#8593; / X rotate</li>
+        <li>Space hard drop</li>
+        <li>C hold piece</li>
+        <li>P pause, R restart</li>
+        <li>Touch: tap rotates, swipe moves, flick down drops</li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<script src="game.js"></script>
+</body>
+</html>
